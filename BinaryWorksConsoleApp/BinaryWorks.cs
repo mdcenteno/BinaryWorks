@@ -22,10 +22,27 @@ namespace BinaryWorksConsoleApp
             return output;
         }
 
-        public int Cardinality(string bNum, char alg)
+        public int ToDecimal(string binary)
+        {
+            int output = 0;
+            binary = new string(binary.Reverse().ToArray());
+            //Console.WriteLine(binary);
+            int mag = 1;
+
+            foreach (char alg in binary)
+            {
+                //Console.WriteLine($"{alg} - {mag}");
+                output += mag * int.Parse(alg.ToString());
+                mag = mag * 2;
+            }
+            //Console.WriteLine(output);
+            return output;
+        }
+
+        public int Cardinality(string binary, char alg)
         {
             int card = 0;
-            foreach (char c in bNum)
+            foreach (char c in binary)
             {
                 if (c == alg)
                 {
